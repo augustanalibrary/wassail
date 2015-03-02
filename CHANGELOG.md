@@ -1,3 +1,65 @@
+#3.3
+* Moved code to Github
+* Changed documentation files to Markdown.  Reading them in a Markdown reader, or on Github will provide formatting.
+
+#### General
+* Login page adjusted to look better on laptops and smaller screens
+* The username and instance you are logged in with/to will now appear in the top right corner.
+* A `Feedback` button has been added beside the `Logout` button.  By default the button takes the user to an Augustana Library feedback form.
+  * Added configuration value to enable/disable the `Feedback` button.
+  * Added configuration value to change the URL the `Feedback` button points to.
+
+#### Reports
+* Now have the respective IDs displayed in the `Template(s)` and `Course(s)` boxes.
+* Are now sorted by question id.
+* The order of terms has been changed to "Fall","Winter","Spring",'Summer
+
+#### Questions
+* A new column was added to show in which Templates a question is asked.  This column is only visible to users with `unconditional write` access.
+* A new column was added to show how often a question is asked by year and term.  This column is only visible to users with `unconditional write` access
+  * _These two new columns require a lot more work to be done by WASSAIL when generating the page.  As a result, users with `unconditional write` access will notice this page takes longer to load than in the past._
+* Column headers are now repeated every 10 questions
+* When creating/editing a question:
+  * The word "NONE" now appears in the "Tags" summary section, if no tags exist for the question.
+  * Answers are now listed with _a,b,c,d,etc._ rather than _1,2,3,4,etc._
+  * Textfields for entering possible answer text have been widened.
+  * Question text now wraps in the summary box. **Note:** The text may or may not wrap at the same place here, in the editor, or when viewing the question in an online questionnaire.
+  * Tags now appear lowercase in the summary box.
+
+#### Gains Analysis
+* Updated the `Gains Analysis` page to use square brackets around IDs.
+* The `Type(s)` checkboxes are now auto-checked.
+* The order of terms has been changed to "Fall","Winter","Spring",'Summer
+
+#### Courses
+* The `Courses` tab is now renamed `Courses/Events` to reflect the broadened use of WASSAIL.
+  * The modal box that appears when creating a new Course/Event has also had its wording updated.
+
+#### Templates
+* When editing the questions in a template, the icon / list item number spacing has been fixed in Chrome.
+* When editing the questions in a template, the question ID is now displayed.
+
+#### Online questionnaire
+* `Template` ID now only displays once
+* `Course` ID now displays
+* The `Year` dropdown now defaults to the current academic year.  The Academic year in this case is considered to be May 1 - April 30.
+* Online questionnaires can now have an optionally customized rich-text confirmation message.
+* After a user has submitted their responses, the confirmation screen now displays the questions and user-provided answers that were submitted.
+* The order of terms has been changed to "Fall","Winter","Spring",'Summer
+* For questionnaires that allow a file upload, the user is informed of the maximum allowed filesize.  This size is retrieved from the configuration of the server WASSAIL is installed from, so it will accurately represent the limitations on the installed server.
+
+#### Responses
+* When viewing a list of responses, there is now a Printer icon that, when clicked, will generate a page of all responses, formatted for printing.
+* When editing/viewing a response:
+  * "correct" answers are now tabulated.  At the bottom of the page, you will now see how many questions were marked as having a correct answer, the number of _those_ questions that were answered correctly, and the corresponding percentage of correct answers.  For example: **Correct:** 6 / 24 (25%)
+  * Files can now be uploaded.
+  * "Edit" button renamed to "Save and close"
+* The `Template`, `Course`, `Term`, `Type` and `Year` of existing responses can now be edited by users with `unconditional write` privileges - but only for questionnaires that have expired.  All responses in a grouping can be edited at once, as well as individual responses.
+* When adding new responses, the order of terms has been changed to "Fall","Winter","Spring",'Summer
+
+
+** Content below this line was historically not entered as Markdown, so formatting may be off
+
 [v3.2]
 March 18, 2014
 	- The system WASSAIL is developed on has been upgraded to Debian, and PHP version 5.4.4.  If possible, you should upgrade your PHP installation, though WASSAIL *should* still work on older versions
