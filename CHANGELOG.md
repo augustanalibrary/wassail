@@ -58,7 +58,7 @@
 * When adding new responses, the order of terms has been changed to "Fall","Winter","Spring",'Summer
 
 
-** Content below this line was historically not entered as Markdown, so formatting may be off **
+**Content below this line was historically not entered as Markdown, so formatting may be off**
 
 [v3.2]
 March 18, 2014
