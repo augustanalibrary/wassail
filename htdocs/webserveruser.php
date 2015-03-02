@@ -1,0 +1,1 @@
+Web server user: <em><?php echo `whoami` ?></em>

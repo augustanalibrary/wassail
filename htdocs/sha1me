@@ -1,0 +1,17 @@
+#!/usr/bin/php5
+<?PHP
+require_once('/srv/www/htdocs/include/classes/auth.php');
+
+echo "\nSha1me: Computes the sha1 hash of passed arguments.\n";
+
+array_shift($argv);
+if(count($argv) == 0)
+  echo "Pass at least one argument like so: ./sha1me.php hashme\n\n";
+else
+{
+  foreach($argv as $word)
+  {
+    echo $word.': '.Auth::hash($word)."\n";
+  }
+}
+?>

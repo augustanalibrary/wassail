@@ -1,0 +1,38 @@
+ErrorDocument 404 /404.php
+
+RewriteEngine on
+
+#Rewrite the main page
+RewriteRule ^main/$ /main.php
+
+#Rewrite the Courses page
+RewriteRule ^courses/$ /courses.php?o=id&d=desc
+RewriteRule ^courses/(.*)/(.*)/ /courses.php?o=$1&d=$2
+
+#Rewrite the Questions page
+RewriteRule ^questions/$ /questions.php?o=id&d=desc
+RewriteRule ^questions/(.*)/(.*)/ /questions.php?o=$1&d=$2
+
+#Rewrite the Responses page
+RewriteRule ^responses/$ /responses.php
+RewriteRule ^responses/(.*)/(.*)/ /responses.php?o=$1&d=$2
+
+#Rewrite the Templates page
+RewriteRule ^templates/$ /templates.php?o=id&d=desc
+RewriteRule ^templates/(.*)/(.*)/ /templates.php?o=$1&d=$2
+
+#Rewrite the Reports pages
+RewriteRule ^reports/$ /reports.php
+
+#Rewrite the Gains page
+RewriteRule ^gains/$ /gains_analysis.php
+
+#Rewrite the Accounts pages
+RewriteRule ^accounts/$ /accounts.php
+
+#Rewrite the online form page
+RewriteRule ^form/(.*)/ /web_form.php?id=$1
+RewriteRule ^web/(.*)/ /web_form.php?id=$1
+
+#Rewrite the logout page
+RewriteRule ^logout/.* /logout.php

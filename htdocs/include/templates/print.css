@@ -1,0 +1,8 @@
+body{  background-color:#fff!important; }
+#navigation{ font-size:0.7em; }
+#iconbar{ display:none; }
+.no_print{ display:none!important;}
+.for_print{ display:block!important;}
+#tooltip{ display:none; }
+.mceToolbarTop{ visibility:hidden; }
+#footer{ position:relative; }

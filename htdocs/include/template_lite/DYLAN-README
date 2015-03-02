@@ -1,0 +1,10 @@
+Dylan Anderson
+Nobember 15, 2007
+	Added function.count.php - just runs the passed $target through PHPs count() function
+November 8, 2007
+	Modified modifier.escape.php - the input variable $string is now re-cast as a string to allow for any magic __toString functions to be run.
+May 2, 2007
+	Added modifier.ucwords.php - a wrapper for ucwords
+March 30, 2007
+	I've added a custom modifer plugin called modifier.pad.php. This is a wrapper for strpad.  
+	If Template Lite is going to be upgraded, please don't forget about this plugin.

@@ -1,0 +1,203 @@
+{include file = "head.popup.tpl"}
+<script type = "text/javascript">
+{*  This function is only here because the tinyMCE.init call has been updated for v2 of this page, & this page dies if listenforEditorChanges() is not defined *}
+{literal}
+function listenForEditorChanges(e)
+{
+return true;
+}
+{/literal}
+</script>
+      <div class = "notice">
+	Note: changes saved on this page will not be visible on the Questions list page until that page is reloaded/refreshed.
+      </div>
+    <br />
+
+    <div style = "position:relative;">
+    {* Question *}
+    <form method = "post" action = "/popup.edit_question.php?id={$id}" style = "display:inline;">
+    <table class = "edit_question_table" style = "display:inline;">
+      <tr>
+	<th>
+	    {if $id != 0}
+	    Question #{$id}
+	    {else}
+	    New question
+	    {/if}
+	</th>
+      </tr>
+      <tr>
+	<td>
+	  {if (isset($question_message))}
+	  <div class = "{if $question_message.success}success{else}error{/if}">
+	    {$question_message.message}
+	  </div>
+	  {/if}
+	    <textarea name = "content" cols="100" rows = "7">{$text}</textarea> 
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  Categories
+	  <small>
+	    [ Hold Ctrl while clicking to select multiple categories ]
+	  </small>
+	</th>
+      </tr>
+      <tr>
+	<td>
+	  <select multiple="multiple" name = "categories[]" size = "28" id = "categories" style = "vertical-align:top;float:left;margin-right:10px;">
+	    {foreach from=$categories key=category_id value=properties}
+	    <option value = "{$category_id}" {if $properties.selected === TRUE}selected="selected"{/if} style = "font-size:8pt;" id = "category-{$category_id}">{$properties.text}</option>
+	  {/foreach}
+	</select>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  Tags
+	    <small>
+	      [ Separate tags with commas.  All tags will be converted to lowercase.]
+	    </small>
+	</th>
+      </tr>
+      <tr>
+	  <td>
+	    <input type = "text" class = "input-field" name = "tags" value = "{$tags|escape}" style = "width:90%;"/>
+	  </td>
+      </tr>
+	<tr>
+	  <th>
+	    Question type
+	  </th>
+	</tr>
+	<tr>
+	  <td>
+	    <span title = "Single choice means users will only be able to choose one of the provided answers.">
+	      <input type = "radio" name = "question_type" value = "single" id = "format-single-choice" class = "radio" {if $question_type == 'single'}checked = "checked"{/if}/>
+	      <label for = "format-single-choice" class = "clickable">
+		Single answer
+	      </label>
+	    </span>
+
+	    <span title = "'Multiple' choice means users will be able to choose more than one of the provided answers.">
+	      <input type = "radio" name = "question_type" value = "multiple" id = "format-multiple-choice" class = "radio" {if $question_type == 'multiple'}checked = "checked"{/if}/>
+	      <label for = "format-multiple-choice" class = "clickable">
+		Multiple answer
+	      </label>
+	    </span>
+
+	    <span title = "Users will be provided a text box (multiple lines) to enter their answer">
+	      <input type = "radio" name = "question_type" value = "qualitative_long" {if isset($answers) and count($answers) gt 0}onclick = "alert('Important: Choosing this format will delete any answers you have previously set up for this question.');"{ /if } id = "format-short-answer_long" class = "radio" {if $question_type == 'qualitative' and $question_qualitative_type == 'long'}checked = "checked"{/if}/>
+	      <label for = "format-short-answer_long" class = "clickable">
+		Qualitative (Long)
+	      </label>
+	    </span>
+	    <span title = "Users will be provided a text field (one line) to enter their answer">
+	      <input type = "radio" name = "question_type" value = "qualitative_short" {if isset($answers) and count($answers) gt 0}onclick = "alert('Important: Choosing this format will delete any answers you have previously set up for this question.');"{ /if } id = "format-short-answer_short" class = "radio" {if $question_type == 'qualitative' and $question_qualitative_type == 'short'}checked = "checked"{/if}/>
+	      <label for = "format-short-answer_short" class = "clickable">
+		Qualitative (Short)
+	      </label>
+	    </span>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  <input type = "submit" value = "Save question" name = "save_question_text" class = "submit" style = "float:left;"/>
+	  <input type = "submit" value = "Save question &amp; enter another question" name = "save_question_text_again" class = "submit" style = "float:left;"/>
+	  <input type = "submit" value = "Save question &amp; close" name = "save_question_text_close" class = "submit"/>
+	</td>
+      </tr>
+    </table>
+    </form>
+
+
+    {* Answers *}
+      <table class = "edit_question_table" style = "display:inline;position:absolute;margin-left:5px;">
+	<tr>
+	  <th>
+	    Answers
+	  </th>
+	</tr>
+	<tr>
+	  {* If there's no reason not to display the answer form *}
+	  {if $id != 0 and $question_type != 'qualitative'}
+	  <td rowspan = "5">
+	    {if (isset($answer_message))}
+	    <div class = "{if $answer_message.success}success{else}error{/if}">
+	      {$answer_message.message}
+	    </div>
+	    {/if}
+	    <form method = "post" action = "/popup.edit_question.php?id={$id}">
+	    <div>
+	      <input type = "text" name = "new_answer" style = "margin-left:3px;"/>
+	      <input type = "image" src = "/include/templates/images/add.png" class = "image" name = "add_new_answer"/>
+	    </div>
+	  </form>
+	    {if isset($likert) and $question_type != 'multiple'}
+	    <form method = "post" action = "/popup.edit_question.php?id={$id}" id = "likert-form">
+	      <div>
+	      <select name = "likert" id = "likert" style = "margin:3px;">
+		<option value = "-1">Add scaled answers...</option>
+		{foreach from=$likert key=index value=answer}
+		  <option value = "{$index}">{$answer.title}</option>
+		{/foreach}
+	      </select>
+	    </div>
+	    </form>
+	    {/if}
+	    
+	    
+	    {if (isset($answers))}
+	    <form method = "post" action = "/popup.edit_question.php?id={$id}">
+	    <div>
+	      {if count($answers) gt 0}
+	      <ol id = "answers-list" style = "margin:10px;padding-left:20px;position:relative;">
+		{foreach from=$answers key=answer_id value=answer}
+		<li style = "padding-top:5px;">
+		  <img src = "/include/templates/images/arrow-up-down.png" alt = "Reorder" title = "Click and drag to reorder" style = "cursor:n-resize;"/>
+	      <input type = "hidden" name = "answer_id[]" value = "{$answer_id}" />
+	      <input type = "text" name = "answer[]" value = "{$answer.text|escape}" class = "input-field"/>
+	      <input type = "image" src = "/include/templates/images/disk.png" title = "Save this answer" name = "save_{$answer_id}" class = "image"/>
+	      <input type = "image" src = "/include/templates/images/bin.png" title = "Delete this answer" name = "delete_{$answer_id}" class = "delete-button image" />
+	      { if $answer.correct }
+	      <input type = "image" src = "/include/templates/images/check.png" title = "Mark this answer as 'incorrect'" name = "incorrect_{$answer_id}" class = "image" />
+	      { else }
+	      <input type = "image" src = "/include/templates/images/x.png" title = "Mark this answer as 'correct'" name = "correct_{$answer_id}" class = "image" />
+	      { /if }
+	    </li>
+	      {/foreach}
+	    </ol>
+	      {/if}
+	      <input type = "submit" value = "Save answers" class = "submit" style = "width:100%;display:block;" name = "save_answer_order" />
+	    </div>
+	  </form>
+	    {/if}
+	  </td>
+	  
+	  {* If the question id is 0 (which means its a new question), output a message *}
+	  {elseif $id == 0}
+	  <td>
+	    Answers can be added once the question has been saved.
+	  </td>
+
+	  {* If the question type is qualitative, output a message *}
+	  {elseif $question_type == 'qualitative'}
+	  <td>
+	    Answers cannot be added when the Question type is 'qualitative'.
+	  </td>
+	  {/if}
+	  
+      </tr>
+    </table>
+
+    </div>
+
+
+    {* Close window *}
+    <div style = "position:absolute;bottom:10px;right:10px;">
+      <input type = "submit" value = "Close" class = "submit" id = "close"/>
+    </div>
+
+    <script type = "text/javascript" src = "/include/templates/js/edit_question.js"></script>
+{include file = "foot.popup.tpl"}

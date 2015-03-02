@@ -1,0 +1,2 @@
+{*  Note: this file is generating a CSV *}{foreach from=$data key=id value=question}{foreach from=$question.answers key=answer_id value=answer}'{$id}','{$question.question_text|escape:"quotes"}','{$answer_id}','{$answer.text|escape:"quotes"}','{$question.count}','{$answer.count}','{$answer.percentage}'
+{/foreach}{/foreach}
