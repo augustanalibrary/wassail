@@ -9,9 +9,8 @@ WASSAIL 3.3 was built on a system running PHP v5.4.36, and MySQL v5.5.41.  Howev
 
 
 ###Database changes
-After upgrading WASSAIL, there are some database queries you'll need to run.  See the changelog for details.
+After upgrading WASSAIL, run this query:
 
-**Run this:**
 ```sql
 UPDATE
     response,
