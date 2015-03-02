@@ -1,6 +1,6 @@
 #WASSAIL Installation Instructions
 
-_WASSAIL uses some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/)
+WASSAIL uses some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/)
 
 ##Introduction
 
@@ -14,7 +14,7 @@ met the system requirements.
 ###Server
 * Linux OS
   * Tested on Debian
-*PHP 5.4.36
+* PHP 5.4.36
   * Will likely work on any 5.4.* branch
 * Apache
   * Or compatible web server
