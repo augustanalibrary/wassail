@@ -108,13 +108,13 @@ Open `include/config.php`
 
 All filesystem updates must be done as a server administrator, typically this user is 'root'
 
-Change the ownership of the include/templates/compiled/ directory to whichever user the webserver runs as.  This will allow WASSAIL to display properly._ To determine the user the webserver runs as, load up "webserveruser.php" in your browser._
+Change the ownership of the include/templates/compiled/ directory to whichever user the webserver runs as.  This will allow WASSAIL to display properly. _To determine the user the webserver runs as, load up "webserveruser.php" in your browser._
 
 Change the ownership of `include/helpimages` to whichever user the webserver runs as. This will allow you to upload images for the help screens.
 
 Create the directory specified by `UPLOAD_DIR` in include/config.php and set the ownership to whichever user the webserver runs as.
 
-Create a `responses` directory inside the directory specified by `UPLOAD_DIR`.  Set the owner ship to the webserver's user.
+Create a `responses` directory inside the directory specified by `UPLOAD_DIR`.  Set the ownership to the webserver's user.
 
 
 #Finished
