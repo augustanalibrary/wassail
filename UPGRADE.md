@@ -11,15 +11,24 @@ WASSAIL 3.3 was built on a system running PHP v5.4.36, and MySQL v5.5.41.  Howev
 Database connection parameters (username, password, etc.) have been moved from `include/classes/dbi.php` to `include/config.db.php`.  Read the ["Update Configuration" section of the install guide](https://github.com/augustanalibrary/wassail/blob/master/INSTALL.md#update-configuration) for more information.
 
 ###Database changes
-After upgrading WASSAIL, run this query:
+After upgrading WASSAIL, run these queries:
 
 ```sql
 UPDATE
-    response,
-    answer
+    `response`,
+    `answer`
 SET
-    response.answer_id = 0
+    `response`.`answer_id` = 0
 WHERE
-    answer.text = 'No response was provided' AND
-    response.answer_id = answer.id
+    `answer`.`text` = 'No response was provided' AND
+    `response`.`answer_id` = `answer`.`id`
+```
+
+```sql
+ALTER TABLE
+	`web_form` 
+ADD COLUMN
+	`file_count` tinyint(4) NOT NULL DEFAULT 1 AFTER `file_request`, 
+ADD COLUMN
+	`confirmation` text AFTER `name`
 ```
