@@ -57,7 +57,12 @@
 	{$properties.size}
       </td>
       <td>
-	{$properties.last_modified|date:$date_format_short}
+      	<?php 
+	      /* The TemplateLite way of doing this was creating really wacky dates for no discernable reason.
+	       * "1407440239" got rendered as 05/03/39 instead of 07/08/14.  So, raw PHP is used
+	       */
+	      echo date($this->_vars['date_format_short'],$this->_vars['properties']['last_modified']);
+	    ?>
       </td>
       <td>
 	    <div title = "Click to view">

@@ -41,7 +41,12 @@ Response(s) added/edited.  Please re-open the template to see the changes.
 	  {$properties.name}
 	</td>
 	<td>
-	  {$properties.date_added|date:$date_format_short}
+		<?php 
+	      /* The TemplateLite way of doing this was creating really wacky dates for no discernable reason.
+	       * "1407440239" got rendered as 05/03/39 instead of 07/08/14.  So, raw PHP is used
+	       */
+	      echo date($this->_vars['date_format_short'],$this->_vars['properties']['date_added']);
+	    ?>
 	</td>
 	<td>
 { if $rightWrite }
