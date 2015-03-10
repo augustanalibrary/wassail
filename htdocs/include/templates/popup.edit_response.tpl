@@ -150,6 +150,7 @@ function listenForEditorChanges(e){
 		</p>
 	{ /if }	
 	<br />
+	<br />
 		<p>
 			If at this time you would like to upload a file, please do so here:
 		</p>
