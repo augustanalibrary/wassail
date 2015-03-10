@@ -150,6 +150,9 @@ function listenForEditorChanges(e){
 		</p>
 	{ /if }	
 	<br />
+		<p>
+			If at this time you would like to upload a file, please do so here:
+		</p>
 		<input type = "file" name = "new_response_file" /><input type = "submit" name = "upload" value = "Upload new file" class = "submit"/>
 	<br />
 
