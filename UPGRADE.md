@@ -32,3 +32,10 @@ ADD COLUMN
 ADD COLUMN
 	`confirmation` text AFTER `name`
 ```
+
+```sql
+ALTER TABLE
+	`response_id`
+CHANGE COLUMN
+	`filename` `filenames` text;
+```

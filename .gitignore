@@ -11,6 +11,9 @@ htdocs/include/config.db.php
 ########################
 *~
 
+# Compiled templates
+htdocs/include/templates/compiled/*.php
+
 # OS generated files #
 ######################
 .DS_Store
