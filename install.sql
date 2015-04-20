@@ -115,32 +115,6 @@ CREATE TABLE `help` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `import_answers`
---
-
-DROP TABLE IF EXISTS `import_answers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `import_answers` (
-  `old_id` int(11) DEFAULT NULL,
-  `new_id` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `import_courses`
---
-
-DROP TABLE IF EXISTS `import_courses`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `import_courses` (
-  `old_id` varchar(50) DEFAULT NULL,
-  `new_id` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `import_questions`
 --
 
@@ -148,19 +122,6 @@ DROP TABLE IF EXISTS `import_questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `import_questions` (
-  `old_id` int(11) DEFAULT NULL,
-  `new_id` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `import_templates`
---
-
-DROP TABLE IF EXISTS `import_templates`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `import_templates` (
   `old_id` int(11) DEFAULT NULL,
   `new_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -376,4 +337,4 @@ CREATE TABLE `web_form_account` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-20 11:19:37
+-- Dump completed on 2015-04-20 11:23:42
