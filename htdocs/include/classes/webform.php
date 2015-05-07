@@ -228,7 +228,7 @@ VALUES
        '$db_intro',
 	   '$db_file_request',
 	   '$db_file_count',
-	   '$confirmation',
+	   '$db_confirmation',
 	   '$db_email')
 SQL;
 
