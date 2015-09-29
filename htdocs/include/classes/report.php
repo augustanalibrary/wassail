@@ -596,6 +596,7 @@ ORDER BY
       answer.position
 SQL;
 
+
     $result = $this->DB->execute($query,'retrieving reportable questions & answers');
     if(!$result)
     {
@@ -699,16 +700,17 @@ SQL;
 		$answers_copy = $ret_val[$question_id]['answers'];
 		unset($ret_val[$question_id]['answers']);
 		# iterate through the answers in the proper order, and copy over the appropriate array at the appropriate iteration
+    # Since this is where we have access to the Answer, copy over the "correct" property as well
 		foreach($positioned_answers as $answer_id=>$Answer)
 		{
 			$ret_val[$question_id]['answers'][$answer_id] = $answers_copy[$answer_id];
+      $ret_val[$question_id]['answers'][$answer_id]['correct'] = $Answer->correct;
 		}
 		
 		# Add any "no response" answers to the end of the answer list
 		if(isset($answers_copy[0]))
 			$ret_val[$question_id]['answers'][0] = $answers_copy[0];
       }
-
       return $ret_val;
     }
   }
