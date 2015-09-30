@@ -436,10 +436,12 @@ SQL;
 
     //delete all answers if this question is newly saved as qualitative.
     //not necessary, but it cleans up irrelevant answers
-    if($success && $this->type == 'qualitative' && count($this->answers) > 0)
+    if($success && $this->type == 'qualitative' && count($this->answers) > 0){
       $success = $this->_deleteAnswers();
-    else if($success && $this->type != 'qualitative')
+    }
+    else if($success && $this->type != 'qualitative'){
       $success = $this->_saveNewAnswers();
+    }
         
 
     return ($success) ? TRUE : FALSE;
@@ -585,16 +587,21 @@ SQL;
       return FALSE;
     }
 
-
     $position = 1;
+    
     foreach($this->new_answers as $id=>$text)
     {
       $Answer = ($id > 0) ? new Answer($id) : new Answer();
       $Answer->setQuestionID($this->id);
       $Answer->setText($text);
       $Answer->setPosition($position);
-      if($id == $this->correct_answer)
-	$Answer->setCorrect(true);
+      if($id == $this->correct_answer){
+	       $Answer->setCorrect(true);
+      }
+      else{
+        $Answer->setCorrect(FALSE);
+      }
+
 
 
       $position++;
