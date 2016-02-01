@@ -1,5 +1,8 @@
 Dylan Anderson
-Nobember 15, 2007
+February 1, 2016
+	Added ‘@‘ in front of line 159 to stop the “deprecated” error when using the ‘e’ modifier with preg_replace()
+
+November 15, 2007
 	Added function.count.php - just runs the passed $target through PHPs count() function
 November 8, 2007
 	Modified modifier.escape.php - the input variable $string is now re-cast as a string to allow for any magic __toString functions to be run.
